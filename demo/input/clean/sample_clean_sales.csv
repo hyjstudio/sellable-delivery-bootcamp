@@ -1,0 +1,9 @@
+date,order_id,product,region,amount,quantity,status
+2026-05-20,ORD-2001,Widget-A,华东,1200,3,completed
+2026-05-21,ORD-2002,Widget-B,华南,560,2,completed
+2026-05-22,ORD-2003,Widget-A,华北,340,1,completed
+2026-05-23,ORD-2004,Widget-A,华南,890,4,completed
+2026-05-24,ORD-2005,Widget-B,华东,430,1,completed
+2026-05-25,ORD-2006,Widget-D,华北,760,2,completed
+2026-05-26,ORD-2007,Widget-C,华中,680,1,completed
+2026-05-27,ORD-2008,Widget-C,华南,300,1,completed

@@ -1,0 +1,40 @@
+{
+  "totals": {
+    "input_rows": 8,
+    "kept_rows": 7,
+    "invalid_rows": 1,
+    "invalid_row_ratio": 0.125,
+    "dropped_duplicates_rows": 0,
+    "negative_amount_rows": 1
+  },
+  "thresholds": {
+    "max_invalid_row_ratio": 0.05,
+    "max_duplicate_order_ratio": 0.01
+  },
+  "files": [
+    {
+      "source_file": "sample_chaos_sales.csv",
+      "input_rows": 8,
+      "kept_rows": 7,
+      "invalid_row_count": 1,
+      "dropped_duplicate_rows": 0,
+      "invalid_date_rows": 0,
+      "invalid_amount_rows": 1,
+      "negative_amount_rows": 1,
+      "missing_order_id_rows": 1,
+      "duplicated_order_id_rows": 0,
+      "duplicate_order_ratio": 0.0,
+      "invalid_row_samples": [
+        {
+          "row_number": 5,
+          "date": "2026-05-23",
+          "order_id": "ORD-3003",
+          "amount": null,
+          "reasons": [
+            "invalid_amount"
+          ]
+        }
+      ]
+    }
+  ]
+}
