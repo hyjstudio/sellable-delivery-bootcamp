@@ -1,8 +1,51 @@
 # 🧾 Excel/CSV Weekly Report Generator
 
-可交付的表格交付 MVP：批量清洗 Excel/CSV，并自动生成每周销售周报（含数据质量告警）。目标是帮助小商家/咨询类客户在 5 分钟内完成一次标准化周报交付。
+可交付的表格交付 MVP：批量清洗 Excel/CSV，并自动生成每周销售周报（含数据质量告警）。目标是帮助小商家/咨询类客户在 5 分钟内完成一次标准化周报交付。  
 
 ![pipeline](https://img.shields.io/badge/Stage-Clean%20%2B%20Report-brightgreen)
+![python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![tests](https://img.shields.io/badge/Tests-pytest-green)
+
+## 作品页一眼看完（适合 GitHub 主页展示）
+
+<p align="center">
+  <img src="./demo/showcase/assets/placeholder-clean-output.svg" width="30%" alt="weekly report output" />
+  <img src="./demo/showcase/assets/placeholder-quality-alert.svg" width="30%" alt="quality alert" />
+  <img src="./demo/showcase/assets/placeholder-input.svg" width="30%" alt="input sample" />
+  <img src="./demo/showcase/assets/demo-workflow.gif" width="90%" alt="workflow demo gif" />
+</p>
+
+### 立即体验
+
+- 一次体验按钮（建议在命令行复制）  
+  - `python3 -m src.weekly_report --input-dir demo/input/clean --output-dir demo/output/clean`
+- 一次告警体验按钮（用于质检演示）  
+  - `python3 -m src.weekly_report --input-dir demo/input/chaos --output-dir demo/output/chaos_fail --max-invalid-row-rate 0.05 --max-duplicate-order-rate 0.01 --fail-on-quality`
+- 对外可贴：直接把 `demo/input/*` 与 `demo/output/*` 链接到 README（已内置）
+
+### 公开展示结构（模板）
+
+你可以直接在项目首页展示以下 5 项：
+
+1. 项目定位（3 秒看懂）
+2. 快速复现命令（1 次复制即可）
+3. 通过版/告警版输出对照
+4. 收费口径（按次 / 按文件 / 按门店）
+5. 常见问题（减少售前解释成本）
+
+### GitHub 作品页可直接粘贴代码块
+
+```markdown
+![作品快照1](./demo/showcase/assets/placeholder-input.svg)
+![作品快照2](./demo/showcase/assets/placeholder-clean-output.svg)
+![作品快照3](./demo/showcase/assets/placeholder-quality-alert.svg)
+![演示 GIF](./demo/showcase/assets/demo-workflow.gif)
+
+- [5分钟快速体验](#5-分钟上手公开演示最小样例)
+- [演示素材目录](./demo)
+```
+
+> `demo-workflow.gif` 为占位图，建议用你实际录制的 CLI 演示 GIF 替换。
 
 ## 特性
 - 批量读取 `.csv`, `.xlsx`, `.xls`

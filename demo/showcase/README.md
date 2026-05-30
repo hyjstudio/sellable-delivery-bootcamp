@@ -10,6 +10,7 @@
 - `demo/showcase/assets/placeholder-input.svg`
 - `demo/showcase/assets/placeholder-clean-output.svg`
 - `demo/showcase/assets/placeholder-quality-alert.svg`
+- `demo/showcase/assets/demo-workflow.gif`
 
 占位图文件为可替换示例，保留后可直接上传替换为真实截图。
 
@@ -28,7 +29,7 @@
 
 ### B. 生成短 GIF（演示 CLI 链路）
 
-你可以先上传占位 GIF：`demo/showcase/assets/demo-workflow.gif`，
+你可以先用占位 GIF：`demo/showcase/assets/demo-workflow.gif`，
 等素材拍摄齐后再替换。
 
 高级版（无手工录屏）：
