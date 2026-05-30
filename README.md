@@ -27,7 +27,7 @@
 
 - [一键体验（清洗通过版）](#0-安装)
 - [一键体验（告警版）](#2-再跑告警版-触发质量红线)
-- [演示视频 / GIF](./demo/showcase/assets/demo-workflow.gif)
+- [演示视频 / GIF（作品页）](./demo/showcase/demo-video.md)
 - [演示素材目录](./demo)
 - [Showcase 说明](./demo/showcase/README.md)
 

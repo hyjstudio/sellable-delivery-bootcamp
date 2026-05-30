@@ -32,22 +32,40 @@
 当前仓库已提供 `demo/showcase/assets/demo-workflow.gif`；
 你可以继续用更高质量的录屏（同路径替换）覆盖它。
 
-高级版（无手工录屏）：
+建议安装方式：
 
 ```bash
-# 安装（按需）
-brew install asciinema ffmpeg
-npm install -g asciinema-agg
+python3 -m pip install --user asciinema
+
+# 如果 asciinema 不在 PATH，可用：
+# ASCIINEMA_BIN="$(python3 -m site --user-base)/bin/asciinema"
 ```
+
+录制 `.cast` 并回放文本（按你实际设备路径替换）：
 
 ```bash
-asciinema rec demo/showcase/assets/demo-workflow.cast
-# 在录屏中执行 5 分钟上手命令
-# 退出 rec 后再转码为 gif（按终端终端大小可调）
-agg demo/showcase/assets/demo-workflow.cast demo/showcase/assets/demo-workflow.gif
+asciinema rec demo/showcase/assets/demo-workflow.cast -c "bash -lc 'cd /Users/zhoufangming/Developer/learning/sellable-delivery-bootcamp; python3 -m src.weekly_report --input-dir demo/input/clean --output-dir demo/output/clean; python3 -m src.weekly_report --input-dir demo/input/chaos --output-dir demo/output/chaos_fail --max-invalid-row-rate 0.05 --max-duplicate-order-rate 0.01 --fail-on-quality || true'"
+
+asciinema cat demo/showcase/assets/demo-workflow.cast
 ```
 
-> 如未安装工具，不影响项目交付；当前素材已足够先把仓库发布成可浏览版本，后续可替换为更高质量截图/录屏。
+> 当前仓库的 `demo-workflow.gif` 由 `.cast` 会话在本地脚本中渲染生成；你可以直接替换 `.cast` 或 `.gif`，无需改文档链接。
+
+## 演示视频页（作品页入口）
+
+除了静态截图，仓库新增了单独页面用于“作品页级”展示：
+
+- `demo/showcase/demo-video.md`（演示流程 + 命令片段）
+
+建议把该页面放到主 README 的 “Launch Demo” 中对外曝光，点击即可直接进入视频演示页。
+
+## 终端演示卡片（可直接引用）
+
+```markdown
+[![Terminal Demo](./assets/demo-workflow.gif)](./demo-video.md)
+```
+
+`./assets/demo-workflow.gif` 替换为你录制的终端录屏 GIF 后，作品页会立即变得更“可销售”。
 
 ## 在 README 的嵌入建议
 将图片改写成你自己的链接路径：

@@ -1,0 +1,6 @@
+{"version": 2, "width": 80, "height": 24, "timestamp": 1780139723, "env": {"SHELL": "/bin/zsh", "TERM": "dumb"}}
+[0.006833, "o", "\r\n# Excel/CSV Weekly Report Generator Demo\r\n\r\nDemo start: clean output\r\n"]
+[0.317425, "o", "cleaned rows => demo/output/clean/cleaned_rows.csv\r\nweekly csv => demo/output/clean/weekly_report.csv\r\nweekly md  => demo/output/clean/weekly_report.md\r\nquality json => demo/output/clean/quality_report.json\r\nquality md  => demo/output/clean/quality_report.md\r\n"]
+[0.34164, "o", "\r\nDemo: bad data quality trigger\r\n"]
+[0.631426, "o", "发现质量问题超过阈值:\r\ninvalid_row_ratio=12.50% > threshold=5.00%\r\n"]
+[0.654507, "o", "\r\nDemo complete\r\n"]
