@@ -1,0 +1,50 @@
+{
+  "profiles": {
+    "default": {
+      "date": [
+        "date",
+        "日期",
+        "order_date",
+        "order date",
+        "trade_date",
+        "交易日期",
+        "销售日期"
+      ],
+      "amount": [
+        "amount",
+        "revenue",
+        "sales",
+        "total",
+        "total_amount",
+        "金额",
+        "销售额",
+        "成交额"
+      ],
+      "order_id": [
+        "order_id",
+        "order",
+        "订单号",
+        "订单 ID",
+        "id"
+      ]
+    },
+    "cn_ops_template_a": {
+      "date": [
+        "订单日期",
+        "付款时间",
+        "交易日期"
+      ],
+      "amount": [
+        "成交金额",
+        "实收金额",
+        "订单金额",
+        "金额"
+      ],
+      "order_id": [
+        "订单号",
+        "交易单号",
+        "订单ID"
+      ]
+    }
+  }
+}

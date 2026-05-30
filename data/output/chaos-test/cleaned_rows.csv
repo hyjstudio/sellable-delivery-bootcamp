@@ -1,0 +1,9 @@
+﻿source_file,product,region,quantity,status,report_date,amount,order_id,report_week
+sample_sales.csv,Widget-A,华东,3,completed,2026-05-20,1200.0,ORD-1001,2026-05-19
+sample_sales.csv,Widget-B,华南,2,completed,2026-05-21,560.0,ORD-1002,2026-05-19
+sample_sales.csv,Widget-A,华北,1,completed,2026-05-21,340.0,ORD-1003,2026-05-19
+sample_sales.csv,Widget-A,华南,4,completed,2026-05-23,890.0,ORD-1004,2026-05-19
+sample_sales.csv,Widget-B,华东,1,completed,2026-05-24,430.0,ORD-1006,2026-05-19
+sample_sales.csv,Widget-D,华北,2,completed,2026-05-25,760.0,ORD-1007,2026-05-19
+sample_sales.csv,Widget-A,华中,1,completed,2026-05-26,680.0,ORD-1008,2026-05-26
+sample_sales.csv,Widget-C,华南,1,completed,2026-05-27,300.0,ORD-1010,2026-05-26

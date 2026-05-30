@@ -1,0 +1,29 @@
+{
+  "totals": {
+    "input_rows": 10,
+    "kept_rows": 8,
+    "invalid_rows": 2,
+    "invalid_row_ratio": 0.2,
+    "dropped_duplicates_rows": 0,
+    "negative_amount_rows": 0
+  },
+  "thresholds": {
+    "max_invalid_row_ratio": 1.0,
+    "max_duplicate_order_ratio": 1.0
+  },
+  "files": [
+    {
+      "source_file": "sample_sales.csv",
+      "input_rows": 10,
+      "kept_rows": 8,
+      "invalid_row_count": 2,
+      "dropped_duplicate_rows": 0,
+      "invalid_date_rows": 0,
+      "invalid_amount_rows": 2,
+      "negative_amount_rows": 0,
+      "missing_order_id_rows": 0,
+      "duplicated_order_id_rows": 0,
+      "duplicate_order_ratio": 0.0
+    }
+  ]
+}
