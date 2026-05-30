@@ -6,13 +6,13 @@
 - 提供 3 张图片 + 1 段 GIF 的标准化素材
 - 方便你直接放到 GitHub README、公众号、Notion、私域海报中
 
-## 当前占位文件
-- `demo/showcase/assets/placeholder-input.svg`
-- `demo/showcase/assets/placeholder-clean-output.svg`
-- `demo/showcase/assets/placeholder-quality-alert.svg`
+## 当前展示文件
+- `demo/showcase/assets/clean-input.png`
+- `demo/showcase/assets/clean-output.png`
+- `demo/showcase/assets/quality-alert.png`
 - `demo/showcase/assets/demo-workflow.gif`
 
-占位图文件为可替换示例，保留后可直接上传替换为真实截图。
+文件均为当前工程真实运行结果导出的展示素材；若你喜欢终端原生截图，可直接替换为同名文件。
 
 ## 推荐拍摄流程
 
@@ -24,13 +24,13 @@
    - 告警版质检（`demo/output/chaos_fail/quality_report.md`）
 3. 将截图保存为：
    - `demo/showcase/assets/clean-input.png`
-   - `demo/showcase/assets/weekly-output.png`
+   - `demo/showcase/assets/clean-output.png`
    - `demo/showcase/assets/quality-alert.png`
 
 ### B. 生成短 GIF（演示 CLI 链路）
 
-你可以先用占位 GIF：`demo/showcase/assets/demo-workflow.gif`，
-等素材拍摄齐后再替换。
+当前仓库已提供 `demo/showcase/assets/demo-workflow.gif`；
+你可以继续用更高质量的录屏（同路径替换）覆盖它。
 
 高级版（无手工录屏）：
 
@@ -47,14 +47,14 @@ asciinema rec demo/showcase/assets/demo-workflow.cast
 agg demo/showcase/assets/demo-workflow.cast demo/showcase/assets/demo-workflow.gif
 ```
 
-> 如未安装工具，不影响项目交付；占位图已足够先把仓库发布成可浏览版本。
+> 如未安装工具，不影响项目交付；当前素材已足够先把仓库发布成可浏览版本，后续可替换为更高质量截图/录屏。
 
 ## 在 README 的嵌入建议
 将图片改写成你自己的链接路径：
 
 ```markdown
 ![示例输入](./showcase/assets/clean-input.png)
-![通过版输出](./showcase/assets/weekly-output.png)
+![通过版输出](./showcase/assets/clean-output.png)
 ![告警质检](./showcase/assets/quality-alert.png)
 ![演示 GIF](./showcase/assets/demo-workflow.gif)
 ```

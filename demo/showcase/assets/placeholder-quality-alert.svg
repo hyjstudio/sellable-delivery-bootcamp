@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
-  <rect width="1280" height="720" fill="#fff1f2" stroke="#be123c" stroke-width="6"/>
-  <rect x="40" y="40" width="1200" height="640" fill="#ffffff" stroke="#fecdd3"/>
-  <text x="640" y="220" text-anchor="middle" font-size="48" fill="#be123c" font-family="Arial, sans-serif">质量告警快照</text>
-  <text x="640" y="320" text-anchor="middle" font-size="34" fill="#334155" font-family="Arial, sans-serif">quality_report.md（chaos_fail）</text>
-  <text x="640" y="380" text-anchor="middle" font-size="28" fill="#64748b" font-family="Arial, sans-serif">（占位图：可替换为真实截图）</text>
-  <text x="640" y="520" text-anchor="middle" font-size="32" fill="#991b1b" font-family="Arial, sans-serif">invalid_row_ratio=12.50% &gt; threshold=5.00%</text>
-</svg>

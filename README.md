@@ -9,9 +9,9 @@
 ## 作品页一眼看完（适合 GitHub 主页展示）
 
 <p align="center">
-  <img src="./demo/showcase/assets/placeholder-clean-output.svg" width="30%" alt="weekly report output" />
-  <img src="./demo/showcase/assets/placeholder-quality-alert.svg" width="30%" alt="quality alert" />
-  <img src="./demo/showcase/assets/placeholder-input.svg" width="30%" alt="input sample" />
+  <img src="./demo/showcase/assets/clean-output.png" width="30%" alt="weekly report output" />
+  <img src="./demo/showcase/assets/quality-alert.png" width="30%" alt="quality alert" />
+  <img src="./demo/showcase/assets/clean-input.png" width="30%" alt="input sample" />
   <img src="./demo/showcase/assets/demo-workflow.gif" width="90%" alt="workflow demo gif" />
 </p>
 
@@ -22,6 +22,14 @@
 - 一次告警体验按钮（用于质检演示）  
   - `python3 -m src.weekly_report --input-dir demo/input/chaos --output-dir demo/output/chaos_fail --max-invalid-row-rate 0.05 --max-duplicate-order-rate 0.01 --fail-on-quality`
 - 对外可贴：直接把 `demo/input/*` 与 `demo/output/*` 链接到 README（已内置）
+
+### 🚀 Launch Demo
+
+- [一键体验（清洗通过版）](#0-安装)
+- [一键体验（告警版）](#2-再跑告警版-触发质量红线)
+- [演示视频 / GIF](./demo/showcase/assets/demo-workflow.gif)
+- [演示素材目录](./demo)
+- [Showcase 说明](./demo/showcase/README.md)
 
 ### 公开展示结构（模板）
 
@@ -36,16 +44,16 @@
 ### GitHub 作品页可直接粘贴代码块
 
 ```markdown
-![作品快照1](./demo/showcase/assets/placeholder-input.svg)
-![作品快照2](./demo/showcase/assets/placeholder-clean-output.svg)
-![作品快照3](./demo/showcase/assets/placeholder-quality-alert.svg)
+![作品快照1](./demo/showcase/assets/clean-input.png)
+![作品快照2](./demo/showcase/assets/clean-output.png)
+![作品快照3](./demo/showcase/assets/quality-alert.png)
 ![演示 GIF](./demo/showcase/assets/demo-workflow.gif)
 
 - [5分钟快速体验](#5-分钟上手公开演示最小样例)
 - [演示素材目录](./demo)
 ```
 
-> `demo-workflow.gif` 为占位图，建议用你实际录制的 CLI 演示 GIF 替换。
+> `demo-workflow.gif` 当前为项目内生成的演示 GIF。后续可替换为你录制的 CLI 录像 GIF 或视频。
 
 ## 特性
 - 批量读取 `.csv`, `.xlsx`, `.xls`
@@ -166,7 +174,7 @@ python scripts/client_delivery_pack.py run sample-client
   - 图 2：通过版周报输出（clean）
   - 图 3：质量告警样本（chaos）
 - 预期增加 1 段 8~12 秒 GIF，展示“通过版 -> 告警版”的完整链路
-- 默认先放置占位图到 `demo/showcase/assets/`，再替换成真实截图/GIF
+- 当前仓库已放入 `demo/showcase/assets/` 的第一版展示图；后续可替换为你更高质量的终端截图/GIF。
 
 ## 常见问题
 
