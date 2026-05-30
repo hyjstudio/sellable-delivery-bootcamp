@@ -1,124 +1,147 @@
-# Excel/CSV Weekly Report Generator
+# 🧾 Excel/CSV Weekly Report Generator
 
-一个可交付 MVP：批量清洗 Excel/CSV，并自动生成按周汇总的销售周报。
+可交付的表格交付 MVP：批量清洗 Excel/CSV，并自动生成每周销售周报（含数据质量告警）。目标是帮助小商家/咨询类客户在 5 分钟内完成一次标准化周报交付。
 
-## 目标
-- 批量读取 `data/raw/` 下的 `.csv`, `.xlsx`, `.xls` 文件
-- 自动清洗：
-  - 标准化列名
-  - 解析日期、数值字段
-  - 去重
-  - 过滤无效行
-- 输出结果：
-  - 全量清洗明细：`data/output/cleaned_rows.csv`
-  - 周报汇总：`data/output/weekly_report.csv`
-  - 周报 Markdown：`data/output/weekly_report.md`
-  - 质检报告：`data/output/quality_report.json`、`data/output/quality_report.md`
+![pipeline](https://img.shields.io/badge/Stage-Clean%20%2B%20Report-brightgreen)
 
-## 快速上手
-1. 安装依赖
+## 特性
+- 批量读取 `.csv`, `.xlsx`, `.xls`
+- 自动字段映射（`field-map.json`）+ 多客户 profile
+- 日期/金额解析与基础清洗
+- 重复订单号去重
+- 生成周报：`weekly_report.csv/.md`
+- 数据质量报告：`quality_report.json/.md`
+- 可配置质量阈值与 `--fail-on-quality` 质量闸门（适配自动交付流水线）
+
+## 可卖交付版本（面向客户展示）
+
+- 目标交付对象：小商家、独立咨询师、服务型团队、财务/运营外包
+- 交付形式：脚本一键复现 + 结果文件 + 质量告警说明
+- 建议售价：先用演示素材验证价值，再按你的服务策略分层定价（下文给了可直接粘贴的定价模板）
+
+### 费用口径（样例）
+
+| 套餐 | 计费口径 | 适配场景 | 参考起价（示例） |
+| --- | --- | --- | --- |
+| 标准交付 | 按次 | 1~3 个文件，单次报表输出 | 299 元/次 |
+| 文件包 | 按文件数 | 4~20 个文件，按量计费 | 19 元/文件 |
+| 门店月包 | 按门店+月度 | 固定门店周报，含异常复核 | 899 元/店/月 |
+
+### 交付说明（可直接写给客户）
+
+- 你提交：原始 Excel/CSV（支持多个文件）
+- 我方交付：
+  - `cleaned_rows.csv`（清洗明细）
+  - `weekly_report.csv/.md`（标准周报）
+  - `quality_report.json/.md`（质检结论与异常样例）
+- 质量条款：触发红线则先给出“问题样例 + 处理建议”，并保留失败证据；补齐源数据后可重跑交付。
+- 可选增值：字段映射定制、模板化交付文案、按店铺口径二次聚合。
+
+## 5 分钟上手（公开演示最小样例）
+
+### 0) 安装
 ```bash
 cd /Users/zhoufangming/Developer/learning/sellable-delivery-bootcamp
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
-2. 把你的原始文件放到 `data/raw/`
-3. 运行
+
+### 1) 先跑“通过版”样例（1-3 秒）
 ```bash
-python -m src.weekly_report
+python3 -m src.weekly_report \
+  --input-dir demo/input/clean \
+  --output-dir demo/output/clean
 ```
 
-可选参数：
+预期结果：
+- `demo/output/clean/weekly_report.md`（可直接发客户）
+- `demo/output/clean/quality_report.md`（质量报告）
+
+### 2) 再跑“告警版”（触发质量红线）
 ```bash
-python -m src.weekly_report \
-  --input-dir data/raw \
-  --output-dir data/output \
-  --date-format %Y-%m-%d
+python3 -m src.weekly_report \
+  --input-dir demo/input/chaos \
+  --output-dir demo/output/chaos_fail \
+  --max-invalid-row-rate 0.05 \
+  --max-duplicate-order-rate 0.01 \
+  --fail-on-quality
 ```
 
-可选参数（可结合 `field-map.<profile>.json` 中 `quality` 段落覆盖默认阈值）：
-```bash
-python -m src.weekly_report \
-  --max-invalid-row-rate 0.2 \
-  --max-duplicate-order-rate 0.05 \
- --fail-on-quality
-```
+预期行为：返回非 0 退出码（示例中会显示 `invalid_row_ratio=12.50% > threshold=5.00%`），用于触发交付方的数据质量复核流程。
 
-说明：
-- `--max-invalid-row-rate`：可接受的无效行比例上限（0~1）
-- `--max-duplicate-order-rate`：可接受的重复订单行比例上限（0~1）
-- `--fail-on-quality`：超过阈值时以非 0 码退出，适合交付链路自动化。
+## 示例对照（你可以直接粘贴到客户说明里）
 
-最小回归测试：
-```bash
-python -m pip install pytest
-python -m pytest
-```
+| 场景 | 输入 | 关键参数 | 产物 | 交付含义 |
+| --- | --- | --- | --- | --- |
+| 通过版 | `demo/input/clean/sample_clean_sales.csv` | 默认阈值 | `demo/output/clean/` | 报表可直接输出 |
+| 告警版 | `demo/input/chaos/sample_chaos_sales.csv` | `--max-invalid-row-rate 0.05` + `--fail-on-quality` | `demo/output/chaos_fail/`（文件仍会生成） | 质量红线阻断，提醒客户修复源数据 |
 
-测试覆盖：
-- `load_dataframe` 的无效行统计与错误样例返回
-- CLI 产物（`quality_report.md/json`）包含每文件错误样例
+## 输出清单（每次运行）
+运行后会在 `--output-dir` 下生成：
+- `cleaned_rows.csv`：清洗后明细表
+- `weekly_report.csv`：周维度聚合表
+- `weekly_report.md`：可读周报
+- `quality_report.md`：中文可读质检报告（含异常样例）
+- `quality_report.json`：结构化质检结果（适合自动化汇总）
 
-## 字段映射规则
-我们新增了“可售版本”字段映射模板：`field-map.json`。
+## 字段映射（客户化）
 
-脚本会先读取映射文件（默认 `field-map.json`）中的 `profiles`，再按 `--map-profile` 选择对应客户模板。
-
-```bash
-python -m src.weekly_report --map-profile cn_ops_template_a
-```
-
-如果映射文件不存在会回退到内置规则。你也可以临时指定其他映射文件：
+基础映射文件默认是 `field-map.json`，支持多个 profile：
 
 ```bash
-python -m src.weekly_report --field-map /path/to/field-map.json --map-profile client_a
+python3 -m src.weekly_report --map-profile cn_ops_template_a
 ```
 
-字段映射样例（同一份文件里可放多个客户）：
-- 默认 profile：`default`
-- 自定义 profile：`cn_ops_template_a`
-
-### 多客户交付包（推荐）
-
-我们提供 `scripts/client_delivery_pack.py`：
-
-1) 按客户创建模板（自动生成 `field-map.<client>.json`）
+若你有真实客户字段名，可复制并修改：
 
 ```bash
-python scripts/client_delivery_pack.py create "acme-shop"
+python3 -m src.weekly_report \
+  --field-map field-map.<client>.json \
+  --map-profile <client>
 ```
 
-会生成：`field-map.acme-shop.json`
-
-2) 一键按客户模板跑周报
+支持一键多客户交付包：
 
 ```bash
-python scripts/client_delivery_pack.py run acme-shop
+python scripts/client_delivery_pack.py create sample-client
+python scripts/client_delivery_pack.py run sample-client
 ```
 
-脚本会自动用该客户文件和对应 profile 执行：
+## 公开展示素材（已内置）
 
+完整可复用素材在 `demo/`：
+- `demo/input/clean/*`：正常样本输入（通过版）
+- `demo/input/chaos/*`：脏数据样本（告警版）
+- `demo/output/clean/*`：通过版输出
+- `demo/output/chaos_fail/*`：告警版输出（附失败日志）
+
+## 演示截图 / GIF（展示页级打磨）
+
+- 先按 `demo/showcase/README.md` 做三图一文案：
+  - 图 1：输入样本快照（clean）
+  - 图 2：通过版周报输出（clean）
+  - 图 3：质量告警样本（chaos）
+- 预期增加 1 段 8~12 秒 GIF，展示“通过版 -> 告警版”的完整链路
+- 默认先放置占位图到 `demo/showcase/assets/`，再替换成真实截图/GIF
+
+## 常见问题
+
+### 为什么我没看到某些字段？
+当前映射优先按 `field-map.json` 的 `profiles` 匹配 `date/amount/order_id`。可按你的文件命名新增同义词并提交。
+
+### 什么情况下会触发 `--fail-on-quality`？
+当 `invalid_row_ratio` 或重复订单率超过阈值时，脚本会直接 `exit 1`，适合与客户交付前的质检闸门对接。
+
+### 可以改成按门店/文件分账？
+可以。后续可加 `client_name/store` 列聚合，但当前版本已保持最小可交付，便于快速上手和演示。
+
+## 本地回归测试
 ```bash
-python -m src.weekly_report --field-map field-map.acme-shop.json --map-profile acme-shop
+python3 -m pip install pytest
+python3 -m pytest -q
 ```
 
-你也可以在客户交付时快速改参数：
-
-```bash
-python scripts/client_delivery_pack.py run acme-shop --input-dir data/raw --output-dir data/output/acme-shop
-```
-
-如果要覆盖已有模板，添加 `--overwrite`。
-
-## 现有内置字段映射
-- 日期列：`date`, `日期`, `order_date`, `order date`, `交易日期`
-- 金额列：`revenue`, `sales`, `amount`, `total`, `金额`, `销售额`
-- 订单号列：`order_id`, `order`, `订单号`
-
-如果你文件的字段名更特殊，请按 `field-map.json` 新增或修改对应 profile。可用同义词越多，适配不同源数据越快。
-
-
-## 交付口径说明（第一版）
-- 周期按周一为一周起点（ISO 一周）
-- 统计总销售额、订单数、客单价（销售额/订单数）、有销量行数
+## 已完成口径
+- 周报按 ISO 周（周一起点）聚合
+- 统计指标：周销售额、订单数、客单价、行数

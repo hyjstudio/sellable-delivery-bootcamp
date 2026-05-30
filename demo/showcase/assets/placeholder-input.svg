@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f7fb" stroke="#0f766e" stroke-width="6"/>
+  <rect x="40" y="40" width="1200" height="640" fill="#ffffff" stroke="#d4d4d8"/>
+  <text x="640" y="220" text-anchor="middle" font-size="48" fill="#0f766e" font-family="Arial, sans-serif">示例输入快照</text>
+  <text x="640" y="320" text-anchor="middle" font-size="34" fill="#334155" font-family="Arial, sans-serif">sample_clean_sales.csv</text>
+  <text x="640" y="380" text-anchor="middle" font-size="28" fill="#64748b" font-family="Arial, sans-serif">（占位图：可替换为真实截图）</text>
+  <text x="640" y="520" text-anchor="middle" font-size="24" fill="#0f172a" font-family="Arial, sans-serif">date, order_id, product, region, amount, quantity, status</text>
+</svg>

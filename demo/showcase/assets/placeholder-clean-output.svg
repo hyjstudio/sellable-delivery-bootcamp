@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#ecfeff" stroke="#0891b2" stroke-width="6"/>
+  <rect x="40" y="40" width="1200" height="640" fill="#ffffff" stroke="#bae6fd"/>
+  <text x="640" y="220" text-anchor="middle" font-size="48" fill="#0e7490" font-family="Arial, sans-serif">周报输出快照</text>
+  <text x="640" y="320" text-anchor="middle" font-size="34" fill="#334155" font-family="Arial, sans-serif">weekly_report.md（示例通过版）</text>
+  <text x="640" y="380" text-anchor="middle" font-size="28" fill="#64748b" font-family="Arial, sans-serif">（占位图：可替换为真实截图）</text>
+  <text x="640" y="520" text-anchor="middle" font-size="26" fill="#0f172a" font-family="Arial, sans-serif">Week Start | Weekly Sales | Orders | Avg Order Value | Rows</text>
+</svg>
